@@ -67,7 +67,7 @@ foreach ($_SESSION['fll'] as $id) {
 // strip the last comma
 $member_ids = substr_replace($member_ids, '', -1);
 
-$member_q = $dbs->query('SELECT m.member_essay, m.member_name, m.member_id, m.member_image, m.member_address, m.member_email, m.inst_name, m.postal_code, m.pin, m.member_phone, m.expire_date, m.register_date, mt.member_type_name FROM member AS m
+$member_q = $dbs->query('SELECT m.member_essay_no, m.member_essay, m.member_name, m.member_id, m.member_image, m.member_address, m.member_email, m.inst_name, m.postal_code, m.pin, m.member_phone, m.expire_date, m.register_date, mt.member_type_name FROM member AS m
     LEFT JOIN mst_member_type AS mt ON m.member_type_id=mt.member_type_id
     WHERE m.member_id IN('.$member_ids.')');
 $member_datas = array();
@@ -90,11 +90,17 @@ $pdf = new PDFPP();
 foreach ($chunked_card_arrays as $membercard_rows) {
 	foreach ($membercard_rows as $card) {
 		// Get num
-		$number            = (int)file_get_contents(MDLBS.'membership/fll/loanquee.txt');
+		/* $number            = (int)file_get_contents(MDLBS . 'membership/fll/loanquee.txt');
 		if ($number == 0) {
 			$number = $number + 1;
 		}
-		$sysconf['number'] = sprintf("%03d", $number);
+		$sysconf['number'] = sprintf("%03d", $number); */
+		// Check Nomor Surat
+		if (is_null($card['member_essay_no'])) {
+			$sysconf['number'] = '<font style="color: red;">Nomor surat tidak ada</font>';
+		} else {
+			$sysconf['number'] = substr('0000' . $card['member_essay_no'], -3, 3);
+		}
 		/* Add page*/
 		$pdf->AddPage();
 		/* Header */
@@ -108,7 +114,7 @@ foreach ($chunked_card_arrays as $membercard_rows) {
 		$pdf->Ln(10);
 		/* Content */
 		$pdf->Cell(23,5,'',0);
-		$pdf->Cell(190,3, $sysconf['print']['freeloan']['declare_letter'] ,0,1,'L');
+		$pdf->MultiCell(145, 6, $sysconf['print']['freeloan']['declare_letter'], 0);
 		$pdf->Ln();
 		$pdf->Cell(25,5,'',0);
 		$pdf->Cell(30,10,'Nama', 0, '', 'L');
@@ -127,6 +133,9 @@ foreach ($chunked_card_arrays as $membercard_rows) {
 		$pdf->Ln(13);
 		$pdf->Cell(24,5,'',0);
 		$pdf->MultiCell(145,6,$sysconf['print']['freeloan']['result_letter'],0);
+		$pdf->Ln();
+		$pdf->Cell(24, 5, '', 0);
+		$pdf->MultiCell(145, 6, $sysconf['print']['freeloan']['sub_result_letter'], 0);
 		$pdf->Ln(13);
 		/* Signature */
 		$pdf->Cell(120,5,'',0);
