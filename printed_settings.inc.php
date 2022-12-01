@@ -47,6 +47,7 @@ $sysconf['print']['freeloan']['items_per_row'] = 1;
 $sysconf['print']['freeloan']['caption_letter'] = 'Surat Keterangan';
 $sysconf['print']['freeloan']['declare_letter'] = '';
 $sysconf['print']['freeloan']['result_letter'] = '';
+$sysconf['print']['freeloan']['sub_result_letter'] = '';
 $sysconf['print']['freeloan']['number_format'] = '/Perp/'; // /Perp/NamaInisialPerpustakaan
 $sysconf['print']['freeloan']['institute'] = '';
 $sysconf['print']['freeloan']['period'] = '';
