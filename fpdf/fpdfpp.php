@@ -297,5 +297,31 @@ class PDFPP extends FPDF
             $script = 'print(true);';
         $this->IncludeJS($script);
     }
+    
+    // Page Header
+    /* function Header()
+    {
+        // Logo
+        $this->Image('logo.png', 10, 6, 30);
+        // Arial bold 15
+        $this->SetFont('Arial', 'B', 15);
+        // Move to the right
+        $this->Cell(80);
+        // Title
+        $this->Cell(30, 10, 'Title', 1, 0, 'C');
+        // Line break
+        $this->Ln(20);
+    } */
+
+    // Page footer
+    public function Footer()
+    {
+        // Position at 2 cm from bottom
+        $this->SetY(-20);
+        $this->SetFont('Arial', '', 12);
+        $this->Cell(0, 10, 'Jl. Lengkong Besar 68 Telp./Fax 022-4205945, 4262456 Bandung 40261', 0, 0, 'C');
+        $this->Ln(5);
+        $this->Cell(0, 10, 'website : http://www.fisip-unpas.org, e-mail: info@fisip-unpas.org', 0, 0, 'C');
+    }
 }
 ?>
