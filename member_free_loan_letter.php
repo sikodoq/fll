@@ -185,6 +185,7 @@ $datagrid = new simbio_datagrid();
 $datagrid->setSQLColumn('m.member_id',
     'm.member_id AS \''.__('Member ID').'\'',
     'm.member_name AS \''.__('Member Name').'\'',
+    'member_essay_no AS \'' . __('Nomor Surat') . '\'',
     'SUBSTRING(`member_essay`, 1, 20) AS \''.__('Judul Skripsi').'\''); // Length of the titile is limit for 20 character
 $datagrid->setSQLorder('m.last_update DESC');
 // is there any search
