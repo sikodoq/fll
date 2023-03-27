@@ -159,7 +159,7 @@ if (isset($_GET['action']) and $_GET['action'] == 'print') {
                 <a target="blindSubmit" href="<?php echo MWB; ?>membership/fll/member_free_loan_letter.php?action=clear" class="notAJAX btn btn-default" style="color: #f00;"><i class="glyphicon glyphicon-trash"></i>&nbsp;<?php echo __('Clear Print Queue'); ?></a>
                 <a target="blindSubmit" href="<?php echo MWB; ?>membership/fll/member_free_loan_letter.php?action=print" class="notAJAX btn btn-default"><i class="glyphicon glyphicon-print"></i>&nbsp;<?php echo __('Cetak Surat Bebas Peminjaman'); ?></a>
                 <a target="blindSubmit" href="<?php echo MWB; ?>membership/fll/member_free_loan_letter.php?action=reset" class="notAJAX btn btn-default" style="color: #f00;"><i class="glyphicon glyphicon-trash"></i>&nbsp;<?php echo __('Reset Nomor'); ?></a>
-                <a href="<?php echo MWB; ?>membership/fll/pop_print_settings.php?type=freeloan" class="notAJAX btn btn-default openPopUp" title="<?php echo __('Setelan Surat Bebas Peminjaman'); ?>"><i class="glyphicon glyphicon-wrench"></i></a>
+                <a href="<?php echo MWB; ?>membership/fll/pop_print_settings.php?type=freeloan" class="notAJAX btn btn-default openPopUp" title="<?php echo __('Setelan Surat Bebas Peminjaman'); ?>"><i class="glyphicon glyphicon-wrench"></i>&nbsp;<?php echo __('Setelan Surat Bebas Peminjaman'); ?></a>
             </div>
             <form name="search" action="<?php echo MWB; ?>membership/fll/member_free_loan_letter.php" id="search" method="get" style="display: inline;"><?php echo __('Search'); ?>:
                 <input type="text" name="keywords" size="30" />
